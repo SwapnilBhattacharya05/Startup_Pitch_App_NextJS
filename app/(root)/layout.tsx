@@ -1,4 +1,4 @@
-import Navbar from "@/app/components/Navbar";
+import Navbar from "@/components/Navbar";
 
 // READONLY SINCE NOT GONNA MODIFY IT
 export default function Layout({
