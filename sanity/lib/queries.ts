@@ -1,16 +1,14 @@
 import {defineQuery} from "next-sanity";
-
-export const STARTUPS_QUERY =
-    /*
-    * CHECKING WHETHER SEARCH EXISTS
-    * OR
-    * SEARCH MATCHES THE TITLE
-    * OR
-    * SEARCH MATCHES THE CATEGORY
-    * OR
-    * SEARCH MATCHES THE AUTHOR'S NAME
-    */
-    defineQuery(` *[_type == "startup" && defined(slug.current) && !defined($search) || title match $search || category match $search || author ->name match $search] | order(_createdAt desc){
+/*
+* CHECKING WHETHER SEARCH EXISTS
+* OR
+* SEARCH MATCHES THE TITLE
+* OR
+* SEARCH MATCHES THE CATEGORY
+* OR
+* SEARCH MATCHES THE AUTHOR'S NAME
+*/
+export const STARTUPS_QUERY = defineQuery(` *[_type == "startup" && defined(slug.current) && !defined($search) || title match $search || category match $search || author ->name match $search] | order(_createdAt desc){
   _id,
   title,
   slug,
@@ -23,7 +21,6 @@ export const STARTUPS_QUERY =
   category,
   image
 }`);
-
 
 export const STARTUP_BY_ID_QUERY = defineQuery(` *[_type == "startup" && _id == $id][0]{
   _id,
@@ -38,4 +35,8 @@ export const STARTUP_BY_ID_QUERY = defineQuery(` *[_type == "startup" && _id == 
   category,
   image,
   pitch
+}`)
+
+export const STARTUP_VIEWS_QUERY = defineQuery(` *[_type == "startup" && _id == $id][0]{ 
+_id, views 
 }`)
