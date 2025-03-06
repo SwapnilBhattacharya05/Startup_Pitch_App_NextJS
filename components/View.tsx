@@ -3,11 +3,16 @@ import Ping from "@/components/Ping";
 import {client} from "@/sanity/lib/client";
 import {STARTUP_VIEWS_QUERY} from "@/sanity/lib/queries";
 import {formatViews} from "@/lib/utils";
+import {writeClient} from "@/sanity/lib/write-client";
+import {after} from 'next/server';
 
 const View = async ({id}: { id: string }) => {
     const {views: totalViews} = await client.withConfig({useCdn: false}).fetch(STARTUP_VIEWS_QUERY, {id});
 
-    // TODO: CREATE A FUNCTION THAT UPDATES THE NUMBER OF VIEWS WHEN A USER OPENS THAT PARTICULAR STARTUP
+    // INCREMENT VIEWS IN SANITY WHEN A USER VISITS THE PAGE
+    // BY USING after THE UPDATE OF THE VIEWS HAPPENS IN THE BACKGROUND
+    // VIEWS WILL BE UPDATED IN THE BACKGROUND WITHOUT BLOCKING THE UI
+    after(async () => await writeClient.patch(id).set({views: totalViews + 1}).commit());
 
     return (
         <div className="view-container">
