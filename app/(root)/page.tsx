@@ -3,12 +3,22 @@ import StartupCard, {StartupTypeCard} from "@/components/StartupCard";
 // import { client } from "@/sanity/lib/client";
 import {sanityFetch, SanityLive} from "@/sanity/lib/live";
 import {STARTUPS_QUERY} from "@/sanity/lib/queries";
+import {auth} from "@/auth";
 
 export default async function Home({searchParams}: { searchParams: Promise<{ query: string }> }) {
     const query = (await searchParams).query;
 
     // RETRIEVE DATA FROM SANITY
     const params = {search: query || null};
+
+    /*
+    * EXTRACT THE SESSION
+    * FROM IT GET THE SANITY ID OF THE AUTHOR FOR THAT USER
+    */
+    const session = await auth();
+
+    // TO AVOID THE WARNING FROM TYPESCRIPT FILE next-auth.d.ts IS CREATED, NOW IT KNOWS SESSION WILL HAVE AN ID
+    console.log(session?.id);
 
     // const posts = await client.fetch(STARTUPS_QUERY);
 
