@@ -27,10 +27,10 @@ const StartupForm = () => {
         pitch,
       };
       await formSchema.parseAsync(formValues); // TAKE THE FORM VALUES AND COMPARE IT WITH FORM-SCHEMA
-      console.log(formValues); // 👀 DEBUG EXTRA LINE REMOVE LATER
-
+      // console.log(formValues); // 👀 DEBUG EXTRA LINE REMOVE LATER
+      //
       const result = await createPitch(prevState, formData, pitch);
-      console.log(result); // 👀 DEBUG EXTRA LINE REMOVE LATER
+      // console.log(result); // 👀 DEBUG EXTRA LINE REMOVE LATER
 
       if (result.status == "SUCCESS") {
         toast.success("Success", {

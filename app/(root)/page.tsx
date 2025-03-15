@@ -18,7 +18,7 @@ export default async function Home({searchParams}: { searchParams: Promise<{ que
     const session = await auth();
 
     // TO AVOID THE WARNING FROM TYPESCRIPT FILE next-auth.d.ts IS CREATED, NOW IT KNOWS SESSION WILL HAVE AN ID
-    console.log(session?.id);
+    // console.log(session?.id);
 
     // const posts = await client.fetch(STARTUPS_QUERY);
 
