@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "easymde/dist/easymde.min.css";
 import {Toaster} from "@/components/ui/sonner";
+import {Analytics} from "@vercel/analytics/next";
 
 const workSans = localFont({
     src: [
@@ -64,6 +65,7 @@ export default function RootLayout({
         <html lang="en">
         <body className={workSans.variable}>
         {children}
+        <Analytics />
         <Toaster position="top-center" richColors/>
         </body>
         </html>
