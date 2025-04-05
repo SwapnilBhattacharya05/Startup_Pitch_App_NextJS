@@ -1,4 +1,4 @@
-# 🚀 NovaX - Startup Pitching Platform
+## 🚀 NovaX - Startup Pitching Platform
 
 A modern **Startup Pitching Platform** built with **Next.js 15** and **React 19**. This application enables entrepreneurs to present their startup ideas, connect with potential investors, and streamline the pitching process effortlessly.
 
